@@ -1,0 +1,210 @@
+/* style.css */
+
+/* Import Dancing Script font fallback */
+body {
+    font-family: 'Dancing Script', cursive, serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+    color: #4a2c3a;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Main container */
+main {
+    max-width: 900px;
+    width: 90%;
+    padding: 2rem 1rem 4rem;
+    z-index: 10;
+    position: relative;
+}
+
+/* Love letter section */
+.love-letter {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.love-letter h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #d81b60;
+}
+
+.love-letter p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+/* Photo album section */
+.photo-album {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 1.5rem 1rem 2rem;
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+    text-align: center;
+}
+
+.photo-album h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ad1457;
+}
+
+/* Book container */
+#book {
+    perspective: 1500px;
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    margin: 0 auto 1rem;
+    position: relative;
+    overflow: visible;
+}
+
+/* Each page */
+.page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    transition: transform 0.8s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.page img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Controls */
+.book-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.book-controls button {
+    background: #d81b60;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(216, 27, 96, 0.6);
+    transition: background-color 0.3s ease;
+}
+
+.book-controls button:hover,
+.book-controls button:focus {
+    background: #ad1457;
+    outline: none;
+}
+
+/* Falling hearts container */
+#falling-hearts {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: visible;
+    z-index: 5;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .love-letter h1 {
+        font-size: 2.2rem;
+    }
+    .love-letter p {
+        font-size: 1.1rem;
+    }
+    .photo-album h2 {
+        font-size: 2rem;
+    }
+    #book {
+        height: 300px;
+    }
+}
+/* Falling hearts style */
+.heart {
+    position: fixed;
+    bottom: 100%;
+    background: #e91e63;
+    opacity: 0.8;
+    transform-origin: center;
+    animation-name: fall, sway;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: 1, infinite;
+    animation-fill-mode: forwards;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    filter: drop-shadow(0 0 2px #c2185b);
+}
+
+/* Heart shape using before and after */
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #e91e63;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -50%;
+    left: 0;
+}
+
+.heart::after {
+    left: 50%;
+    top: 0;
+}
+
+/* Falling animation */
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Sway animation */
+@keyframes sway {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(15px);
+    }
+}
